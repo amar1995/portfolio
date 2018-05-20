@@ -1,20 +1,211 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header page-scroll">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#page-top">Portfolio</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="hidden">
+                  <a href="#page-top"></a>
+              </li>
+              <li class="page-scroll">
+                <a href="#about">About</a>
+              </li>
+              <li class="page-scroll">
+                  <a href="#project">Projects</a>
+              </li>
+              
+              <li class="page-scroll">
+                  <a href="#contact">Contact</a>
+              </li>
+          </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
 
+      
+  <header id="page-top">
+    <div class="container-fluid ">
+        <div class="row parallax">
+            <div class="col-lg-12">
+                <img class="img-responsive img-circle" src="../assets/images/amar.PNG">
+                <div class="middle">
+                    <div class="text">Amar Bathwal</div>
+                </div>
+                <div class="intro-text">
+                    <span class="name"><teximate [text]="title"
+                      [effect] = "options1"
+                      [hover]="hover1"></teximate>
+                    </span>
+                    <hr class="star-light">
+                    <p class="skills"><teximate [text]="text"
+                      [effect] = "options"
+                      [hover]="hover"></teximate></p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="content-wrapper">
+  <section class="primary header" id="about">
+        <div class="left">
+            <div class="caption">
+                <h2 class="title display-3">About</h2>
+                <hr class="star-light">
+                <p class="text">
+                    Pursuing B.Tech in Electronic And Communication. 
+                    I really love to build Web-Application and try out new design for better user interaction. 
+                    I want to build my own frameworks so that other can able to use it.
+                </p>
+                <div class="action input-group">
+                  <input type="text" class="form-control" placeholder="Search for..." required>
+                  <span class="input-group-btn">
+                    <button class="btn btn-success" type="button">Go!</button>
+                  </span>
+            </div>
+            </div>	
+        </div>
+  </section>
+  <section class="success header" id="h">
+        <div class="center">
+            <div class="caption">
+                <h2 class="title display-3">Projects</h2>
+
+            </div>
+            <hr class="star-light">
+            
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-sm-4 col-xs-6">
+                        <div class="panel-group">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <button class="btn btn-outline-primary mb-2 mr-2" (click)="openBackDropCustomClass(content)">Know More</button>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-body"><img class="project-image img-responsive" src="../assets/images/attendanceSystem.PNG"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-4 col-xs-6">
+                        <div class="panel-group">
+                            <div class="panel panel-info">
+                                <div class="panel-body"><button class="btn btn-success">Know More</button></div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-body"><img class="project-image img-responsive" src="../assets/images/hackerCamp.PNG"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-4 col-xs-6">
+                        <div class="panel-group">
+                            <div class="panel panel-info">
+                                <div class="panel-body"><button class="btn btn-success">Know More</button></div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-body"><img class="project-image img-responsive" src="../assets/images/tetris.PNG"></div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div> 
+            </div>	
+        </div>
+    </section>
+    <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+            </div>
+        </ng-template>
+    <section class="success header" id="contact">
+            <div class="right">
+                <div class="caption">
+                    <h2 class="title display-3">Contact</h2>
+                    <hr class="star-light">
+                    <form id="contact-form" method="post" action="contact.php" role="form">
+
+                            <div class="messages"></div>
+                        
+                            <div class="controls">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_name">Firstname *</label>
+                                            <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_lastname">Lastname *</label>
+                                            <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_email">Email *</label>
+                                            <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_phone">Phone</label>
+                                            <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your phone">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="form_message">Message *</label>
+                                            <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="submit" class="btn btn-success btn-send" value="Send message">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p class="text-muted"><strong>*</strong> These fields are required. Contact form template by <a href="http://bootstrapious.com" target="_blank">Bootstrapious</a>.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </form>	
+                </div>	
+            </div>
+            
+            <div class="left">
+              <img src="https://raw.githubusercontent.com/alphadsy/alpha-ui/master/images/laptop.png" alt="" class="img-fluid">
+                <p class="imageTxt">Hello <span class="blink_me">|</span> </p>
+            </div>
+    </section>
+</div>
