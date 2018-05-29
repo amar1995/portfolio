@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+.closebtn {
+    margin-left: 15px;
+    color: rgb(107, 27, 27);
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: grey;
+}

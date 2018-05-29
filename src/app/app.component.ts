@@ -1,5 +1,13 @@
-import { Component, OnInit, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChildren, ElementRef} from '@angular/core';
+import { FormBuilder, FormControl, FormsModule, FormGroup, Validators,  FormControlName } from '@angular/forms';
 import { TeximateModule, TeximateComponent, TeximateOptions, TeximateOrder, TeximateHover } from 'ng-teximate';
+import { GenericValidator } from './generic-validator';
+import { Router } from '@angular/router';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/observable/merge';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 declare var $: any;
 
 @Component({
@@ -33,9 +41,58 @@ export class AppComponent implements OnInit {
     in: 'zoomIn',
     out: 'rubberBand'
   };
-  constructor() {
+  userDetail: FormGroup;
+  validationMessages;
+  @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
+  displayMessage: { [key: string]: string } = {};
+  private genericValidator: GenericValidator;
+  constructor(private fb: FormBuilder,
+    private router: Router) {
+    this.validationMessages = {
+      firstName: {
+          required: 'Name is required.',
+          minlength: 'Name must be at least three characters.'
+      },
+      lastName: {
+          required: 'Surname is required.',
+          minlength: 'SurName must be at least three characters.'
+      },
+      email_id: {
+          required: 'Email is required',
+          email: 'Invalid Email'
+      },
+      message: {
+        required: 'Message is required'
+      }
+    };
+    this.genericValidator = new GenericValidator(this.validationMessages);
   }
 
+
   ngOnInit() {
+    this.userDetail = this.fb.group({
+      firstName: ['', [ Validators.required, Validators.minLength(3)]],
+      lastName: ['', [ Validators.required, Validators.minLength(3)]],
+      email_id: ['', [ Validators.required, Validators.email]],
+      contact: '',
+      message: ['', [ Validators.required ] ]
+    });
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterViewInit(): void {
+    // Watch for the blur event from any input element on the form.
+      const  controlBlurs: Observable<any>[] = this.formInputElements
+          .map((formControl: ElementRef) => Observable.fromEvent(formControl.nativeElement, 'blur'));
+
+      // Merge the blur event observable with the valueChanges observable
+      Observable.merge(this.userDetail.valueChanges, ...controlBlurs).debounceTime(800).subscribe(value => {
+          this.displayMessage = this.genericValidator.processMessages(this.userDetail);
+      });
+  }
+
+  onSubmit() {
+    console.log(this.userDetail);
+    window.location.reload();
   }
 }
