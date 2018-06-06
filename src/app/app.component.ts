@@ -2,12 +2,14 @@ import { Component, OnInit, ViewEncapsulation, ViewChildren, ElementRef} from '@
 import { FormBuilder, FormControl, FormsModule, FormGroup, Validators,  FormControlName } from '@angular/forms';
 import { TeximateModule, TeximateComponent, TeximateOptions, TeximateOrder, TeximateHover } from 'ng-teximate';
 import { GenericValidator } from './generic-validator';
+import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/merge';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+import { AppService } from './app.service';
 declare var $: any;
 
 @Component({
@@ -47,7 +49,9 @@ export class AppComponent implements OnInit {
   displayMessage: { [key: string]: string } = {};
   private genericValidator: GenericValidator;
   constructor(private fb: FormBuilder,
-    private router: Router) {
+    private router: Router,
+    private service: AppService,
+    private _flashMessagesService: FlashMessagesService) {
     this.validationMessages = {
       firstName: {
           required: 'Name is required.',
@@ -93,6 +97,10 @@ export class AppComponent implements OnInit {
 
   onSubmit() {
     console.log(this.userDetail);
-    window.location.reload();
+    this.service.postFormContact(this.userDetail.value).subscribe(data => {
+      console.log(data);
+      // this._flashMessagesService.show('Thanks For Feedback. Please, Check your mail', { cssClass: 'alert-success', timeout: 5000});
+      window.location.reload();
+    })
   }
 }
