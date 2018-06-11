@@ -2,7 +2,6 @@ import { Component, OnInit, ViewEncapsulation, ViewChildren, ElementRef} from '@
 import { FormBuilder, FormControl, FormsModule, FormGroup, Validators,  FormControlName } from '@angular/forms';
 import { TeximateModule, TeximateComponent, TeximateOptions, TeximateOrder, TeximateHover } from 'ng-teximate';
 import { GenericValidator } from './generic-validator';
-import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/observable/fromEvent';
@@ -50,8 +49,7 @@ export class AppComponent implements OnInit {
   private genericValidator: GenericValidator;
   constructor(private fb: FormBuilder,
     private router: Router,
-    private service: AppService,
-    private _flashMessagesService: FlashMessagesService) {
+    private service: AppService) {
     this.validationMessages = {
       firstName: {
           required: 'Name is required.',
